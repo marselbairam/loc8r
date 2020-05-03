@@ -1,9 +1,12 @@
 var mongoose = require('mongoose');
+
 var gracefulShutdown;
+
 var dbURI = 'mongodb://localhost/loc8r';
 mongoose.connect(dbURI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useCreateIndex: true
 });
 
 mongoose.connection.on('connected', function() {
@@ -42,3 +45,5 @@ process.on('SIGTERM', function() {
     process.exit(0);
   });
 });
+
+require('./locations');
