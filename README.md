@@ -3,4 +3,4 @@
 An application to share and review your favorite locations
 
 ## Tech Stack
-Node.js, Express, MongoDB, Mongoose, Angular.js
+Angular.js, Node.js, Express, MongoDB, Mongoose
