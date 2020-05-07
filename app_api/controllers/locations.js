@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Loc = mongoose.model('Location');
 
 var theEarth = (function() {
-  var earthRadius = 6371;
+  var earthRadius = 6371; // km, miles is 3959
 
   var getDistanceFromRads = function(rads) {
     return parseFloat(rads * earthRadius);
@@ -26,11 +26,12 @@ var sendJsonResponse = function(res, status, content) {
 module.exports.locationsListByDistance = function(req, res) {
   var lng = parseFloat(req.query.lng);
   var lat = parseFloat(req.query.lat);
+  var maxDistance = parseFloat(req.query.maxDistance);
   var point = {
     type: "Point",
     coordinates: [lng, lat]
   };
-  if (!lng || !lat) {
+  if ((!lng && lng !== 0) && (!lat && lat !== 0)) {
     sendJsonResponse(res, 404, {
       "message": "lng and lat query parameters are required"
     });
@@ -43,29 +44,31 @@ module.exports.locationsListByDistance = function(req, res) {
         $geoNear: {
           near: point,
           spherical: true,
-          maxDistance: theEarth.getRadsFromDistance(100),
+          maxDistance: theEarth.getRadsFromDistance(maxDistance),
+          distanceMultiplier: 1 / 1000,
           distanceField: 'dist.calculated'
         }
       }
-    ]
-  ).then(function(err, results, stats) {
-    var locations = [];
-    if (err) {
-      sendJsonResponse(res, 404, err);
-    } else {
-      results.forEach(function(doc) {
-        locations.push({
-          distance: theEarth.getDistanceFromRads(doc.dist.calculated),
-          name: doc.obj.name,
-          address: doc.obj.address,
-          rating: doc.obj.rating,
-          facilities: doc.obj.facilities,
-          _id: doc.obj._id
+    ],
+    function(err, results) {
+      var locations = [];
+      if (err) {
+        sendJsonResponse(res, 404, err);
+      } else {
+        results.forEach(function(doc) {
+          locations.push({
+            distance: theEarth.getDistanceFromRads(doc.dist.calculated),
+            name: doc.name,
+            address: doc.address,
+            rating: doc.rating,
+            facilities: doc.facilities,
+            _id: doc._id
+          });
         });
-      });
-      sendJsonResponse(res, 200, locations);
-    }
-  });
+        console.log(locations);
+        sendJsonResponse(res, 200, locations);
+      }
+    });
 };
 
 module.exports.locationsCreate = function(req, res) {
