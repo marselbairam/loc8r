@@ -5,11 +5,11 @@ var theEarth = (function() {
   var earthRadius = 6371; // km, miles is 3959
 
   var getDistanceFromRads = function(rads) {
-    return parseFloat(rads * earthRadius);
+    return parseFloat(rads * 6371);
   };
 
   var getRadsFromDistance = function(distance) {
-    return parseFloat(distance / earthRadius);
+    return parseFloat(distance * 6371);
   };
 
   return {
@@ -45,7 +45,7 @@ module.exports.locationsListByDistance = function(req, res) {
           near: point,
           spherical: true,
           maxDistance: theEarth.getRadsFromDistance(maxDistance),
-          distanceMultiplier: 1 / 1000,
+          distanceMultiplier: 1 / 6371,
           distanceField: 'dist.calculated'
         }
       }
