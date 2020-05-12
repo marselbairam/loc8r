@@ -5,11 +5,11 @@ var theEarth = (function() {
   var earthRadius = 6371; // km, miles is 3959
 
   var getDistanceFromRads = function(rads) {
-    return parseFloat(rads * 6371);
+    return parseFloat(rads * earthRadius);
   };
 
   var getRadsFromDistance = function(distance) {
-    return parseFloat(distance * 6371);
+    return parseFloat(distance * earthRadius);
   };
 
   return {
