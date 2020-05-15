@@ -1,4 +1,4 @@
-# `Loc8r`
+# Loc8r
 An application to share and review your favorite locations
 
 ### Tech Stack
