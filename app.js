@@ -22,7 +22,10 @@ var appClientFiles = {
   'geolocation': fs.readFileSync('app_client/common/services/geolocation.service.js', 'utf-8'),
   'loc8rData': fs.readFileSync('app_client/common/services/loc8rData.service.js', 'utf-8'),
   'formatDistance': fs.readFileSync('app_client/common/filters/formatDistance.filter.js', 'utf-8'),
-  'ratingStars': fs.readFileSync('app_client/common/directives/ratingStars/ratingStars.directive.js', 'utf-8')
+  'ratingStars': fs.readFileSync('app_client/common/directives/ratingStars/ratingStars.directive.js', 'utf-8'),
+  'footerGeneric': fs.readFileSync('app_client/common/directives/footerGeneric/footerGeneric.directive.js', 'utf-8'),
+  'navigation': fs.readFileSync('app_client/common/directives/navigation/navigation.directive.js', 'utf-8'),
+  'pageHeader': fs.readFileSync('app_client/common/directives/pageHeader/pageHeader.directive.js', 'utf-8')
 };
 
 var uglified = uglifyJs.minify(appClientFiles, { compress: false });
@@ -42,8 +45,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client')));
 
-app.use('/', indexRouter);
+// app.use('/', indexRouter);
 app.use('/api', indexApiRouter);
+
+app.use(function(req, res) {
+  res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
