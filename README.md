@@ -1,5 +1,5 @@
 # `Loc8r`
 An application to share and review your favorite locations
 
-## Tech Stack
+### Tech Stack
 Angular.js, Node.js, Express, MongoDB, Mongoose
