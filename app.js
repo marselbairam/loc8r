@@ -19,9 +19,12 @@ app.set('view engine', 'pug');
 var appClientFiles = {
   'app': fs.readFileSync('app_client/app.js', 'utf-8'),
   'home': fs.readFileSync('app_client/home/home.controller.js', 'utf-8'),
+  'about': fs.readFileSync('app_client/about/about.controller.js' ,'utf-8'),
+  'locationDetail': fs.readFileSync('app_client/locationDetail/locationDetail.controller.js', 'utf-8'),
   'geolocation': fs.readFileSync('app_client/common/services/geolocation.service.js', 'utf-8'),
   'loc8rData': fs.readFileSync('app_client/common/services/loc8rData.service.js', 'utf-8'),
   'formatDistance': fs.readFileSync('app_client/common/filters/formatDistance.filter.js', 'utf-8'),
+  'addHtmlLineBreaks': fs.readFileSync('app_client/common/filters/addHtmlLineBreaks.filter.js', 'utf-8'),
   'ratingStars': fs.readFileSync('app_client/common/directives/ratingStars/ratingStars.directive.js', 'utf-8'),
   'footerGeneric': fs.readFileSync('app_client/common/directives/footerGeneric/footerGeneric.directive.js', 'utf-8'),
   'navigation': fs.readFileSync('app_client/common/directives/navigation/navigation.directive.js', 'utf-8'),
