@@ -21,3 +21,8 @@
 .reviewTimestamp {
   color: #ccc;
 }
+
+.map-img {
+  max-width: 100%;
+  height: auto;
+}
