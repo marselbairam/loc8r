@@ -21,6 +21,7 @@ var appClientFiles = {
   'home': fs.readFileSync('app_client/home/home.controller.js', 'utf-8'),
   'about': fs.readFileSync('app_client/about/about.controller.js' ,'utf-8'),
   'locationDetail': fs.readFileSync('app_client/locationDetail/locationDetail.controller.js', 'utf-8'),
+  'reviewModal': fs.readFileSync('app_client/reviewModal/reviewModal.controller.js', 'utf-8'),
   'geolocation': fs.readFileSync('app_client/common/services/geolocation.service.js', 'utf-8'),
   'loc8rData': fs.readFileSync('app_client/common/services/loc8rData.service.js', 'utf-8'),
   'formatDistance': fs.readFileSync('app_client/common/filters/formatDistance.filter.js', 'utf-8'),
