@@ -50,7 +50,6 @@ module.exports.locationsListByDistance = function(req, res) {
             _id: doc._id
           });
         });
-        console.log(locations);
         sendJsonResponse(res, 200, locations);
       }
     });
