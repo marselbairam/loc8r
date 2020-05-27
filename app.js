@@ -26,13 +26,17 @@ var appClientFiles = {
   'about': fs.readFileSync('app_client/about/about.controller.js' ,'utf-8'),
   'locationDetail': fs.readFileSync('app_client/locationDetail/locationDetail.controller.js', 'utf-8'),
   'reviewModal': fs.readFileSync('app_client/reviewModal/reviewModal.controller.js', 'utf-8'),
+  'register': fs.readFileSync('app_client/auth/register/register.controller.js', 'utf-8'),
+  'login': fs.readFileSync('app_client/auth/login/login.controller.js', 'utf-8'),
   'geolocation': fs.readFileSync('app_client/common/services/geolocation.service.js', 'utf-8'),
   'loc8rData': fs.readFileSync('app_client/common/services/loc8rData.service.js', 'utf-8'),
+  'authentication': fs.readFileSync('app_client/common/services/authentication.service.js', 'utf-8'),
   'formatDistance': fs.readFileSync('app_client/common/filters/formatDistance.filter.js', 'utf-8'),
   'addHtmlLineBreaks': fs.readFileSync('app_client/common/filters/addHtmlLineBreaks.filter.js', 'utf-8'),
   'ratingStars': fs.readFileSync('app_client/common/directives/ratingStars/ratingStars.directive.js', 'utf-8'),
   'footerGeneric': fs.readFileSync('app_client/common/directives/footerGeneric/footerGeneric.directive.js', 'utf-8'),
-  'navigation': fs.readFileSync('app_client/common/directives/navigation/navigation.directive.js', 'utf-8'),
+  'navigationCtrl': fs.readFileSync('app_client/common/directives/navigation/navigation.controller.js', 'utf-8'),
+  'navigationDirective': fs.readFileSync('app_client/common/directives/navigation/navigation.directive.js', 'utf-8'),
   'pageHeader': fs.readFileSync('app_client/common/directives/pageHeader/pageHeader.directive.js', 'utf-8')
 };
 
